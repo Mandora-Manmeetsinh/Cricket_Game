@@ -6,25 +6,86 @@
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  perspective: 1000px;
 }
 
 @keyframes ballMovement {
   0% {
     right: 25%;
     bottom: 10rem;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    right: 50%;
+    bottom: 6.5rem;
+    transform: scale(1.2) rotate(180deg);
   }
   100% {
     right: 75%;
     bottom: 3rem;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
 
 .animate-ball {
-  animation: ballMovement 0.5s linear forwards;
+  animation: ballMovement 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+.shine-effect {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shine 2s infinite;
+}
+
+.grass-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2d8630 0px,
+    #2d8630 2px,
+    #267529 2px,
+    #267529 4px
+  );
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   background-color: #2E7D32;
+  overflow-x: hidden;
 }
