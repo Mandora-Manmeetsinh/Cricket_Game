@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@keyframes ballMovement {
+  0% {
+    right: 25%;
+    bottom: 10rem;
+  }
+  100% {
+    right: 75%;
+    bottom: 3rem;
+  }
+}
+
+.animate-ball {
+  animation: ballMovement 0.5s linear forwards;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #2E7D32;
+}
